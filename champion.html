@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>챔피언 | RUNETERRA ARCHIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__brand" href="home.html">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="6">
+        <polygon points="60,6 107,33 107,87 60,114 13,87 13,33"/>
+      </g>
+      <circle cx="60" cy="60" r="16" fill="currentColor"/>
+    </svg>
+    RUNETERRA ARCHIVE
+  </a>
+  <ul class="nav__links">
+    <li><a href="home.html">홈</a></li>
+    <li><a href="home.html#regions">지역</a></li>
+  </ul>
+</nav>
+
+<header class="champ-hero" id="champHero"></header>
+
+<main class="detail-wrap" id="detailWrap"></main>
+
+<footer class="footer">
+  <p><strong>RUNETERRA ARCHIVE</strong> — 학교 과제용 테스트 웹사이트</p>
+  <p style="margin-top:0.4rem;">세계관 및 이미지 출처: Riot Games, League of Legends (Data Dragon)</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>renderChampionPage();</script>
+</body>
+</html>

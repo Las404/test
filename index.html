@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUNETERRA ARCHIVE | 리그 오브 레전드 세계관</title>
+<meta name="description" content="리그 오브 레전드의 세계 룬테라와 지역별 챔피언을 소개하는 아카이브">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="intro" id="intro">
+
+  <!-- 배경 헥스테크 라인 SVG -->
+  <svg class="intro__bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="lineFade" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#785A28" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#C8AA6E" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#785A28" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 중앙 큰 육각형 -->
+    <polygon points="600,180 963,390 963,810 600,1020 237,810 237,390"
+             stroke="url(#lineFade)" stroke-width="1.5" fill="none" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate"
+                        from="0 600 600" to="360 600 600" dur="120s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="600,300 890,468 890,804 600,972 310,804 310,468"
+             stroke="#785A28" stroke-width="1" fill="none" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate"
+                        from="360 600 600" to="0 600 600" dur="90s" repeatCount="indefinite"/>
+    </polygon>
+
+    <!-- 흐르는 대각선 -->
+    <line x1="0" y1="120" x2="1200" y2="60" stroke="url(#lineFade)" stroke-width="1"/>
+    <line x1="0" y1="700" x2="1200" y2="760" stroke="url(#lineFade)" stroke-width="1"/>
+    <line x1="150" y1="0" x2="80" y2="800" stroke="#785A28" stroke-width="0.7" opacity="0.5"/>
+    <line x1="1050" y1="0" x2="1120" y2="800" stroke="#785A28" stroke-width="0.7" opacity="0.5"/>
+
+    <!-- 작은 다이아몬드 장식 -->
+    <g fill="#C8AA6E" opacity="0.55">
+      <rect x="146" y="116" width="8" height="8" transform="rotate(45 150 120)"/>
+      <rect x="1046" y="56" width="8" height="8" transform="rotate(45 1050 60)"/>
+      <rect x="76" y="696" width="8" height="8" transform="rotate(45 80 700)"/>
+      <rect x="1116" y="756" width="8" height="8" transform="rotate(45 1120 760)"/>
+    </g>
+  </svg>
+
+  <div class="intro__inner">
+
+    <!-- 헥스테크 엠블럼 -->
+    <div class="intro__emblem">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <g fill="none" stroke="currentColor">
+          <polygon points="60,6 107,33 107,87 60,114 13,87 13,33" stroke-width="2.5"/>
+          <polygon points="60,26 90,43 90,77 60,94 30,77 30,43" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="60" cy="60" r="12" stroke-width="2"/>
+          <path d="M60 6 V26 M107 33 L90 43 M107 87 L90 77 M60 114 V94 M13 87 L30 77 M13 33 L30 43" stroke-width="1"/>
+        </g>
+        <circle cx="60" cy="60" r="5" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <h1 class="intro__title">RUNETERRA<br>ARCHIVE</h1>
+    <p class="intro__sub">League of Legends</p>
+    <p class="intro__desc">
+      룬테라의 열 개 지역과 그곳에 살아가는 챔피언들의 기록.<br>
+      아래를 눌러 아카이브에 입장하십시오.
+    </p>
+
+    <button class="enter-btn" id="enterBtn">
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <span class="corner c3"></span><span class="corner c4"></span>
+      입장하기
+    </button>
+
+    <p class="intro__hint">CLICK TO ENTER</p>
+  </div>
+</main>
+
+<div class="curtain" id="curtain"></div>
+
+<script>
+/* 배경 입자 생성 */
+(function createParticles() {
+  const host = document.getElementById('intro');
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.bottom = '-10px';
+    p.style.animationDuration = (10 + Math.random() * 16) + 's';
+    p.style.animationDelay = (Math.random() * 14) + 's';
+    const size = 1 + Math.random() * 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    if (Math.random() > 0.6) p.style.background = '#0AC8B9';
+    host.appendChild(p);
+  }
+})();
+
+/* 클릭하면 커튼 전환 후 홈으로 입장 */
+function enterSite() {
+  document.getElementById('curtain').classList.add('active');
+  setTimeout(() => { location.href = 'home.html'; }, 550);
+}
+document.getElementById('intro').addEventListener('click', enterSite);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') enterSite();
+});
+</script>
+</body>
+</html>
